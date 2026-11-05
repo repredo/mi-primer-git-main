@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mi primer git</title>
+  <meta name="description" content="Aprende Git y GitHub en 4 pasos, con prompts listos para tu agente.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <p class="eyebrow">Taller · GitHub para diseñadores</p>
+      <h1>mi primer git</h1>
+      <p class="lede">Cuando construyes con un agente, puedes pedirle que ejecute los comandos. Aun así, necesitas entender qué está haciendo con tu proyecto. Recorre estos 4 pasos con un cambio pequeño.</p>
+    </header>
+
+    <div class="mascot-row">
+      <button class="mascot" id="mascot" type="button" aria-label="Git, tu mascota guía">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle class="mascot-body" cx="16" cy="16" r="15.5" />
+          <g class="mascot-look" id="mascotLook">
+            <g transform="translate(16 16.6) rotate(-26)">
+              <g class="mascot-eyes">
+                <ellipse cx="-3.55" cy="0" rx="1.55" ry="3.7" />
+                <ellipse cx="3.55" cy="0" rx="1.55" ry="3.7" />
+              </g>
+              <g class="mascot-happy">
+                <path d="M-5.3 1.2 Q-3.55 -2.6 -1.8 1.2" />
+                <path d="M1.8 1.2 Q3.55 -2.6 5.3 1.2" />
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+      <p class="bubble" id="bubble" aria-live="polite"></p>
+    </div>
+
+    <section class="card" aria-label="Recorrido de 4 pasos">
+      <div class="progress">
+        <div class="progress-head">
+          <span id="progressText">0 de 4 completados</span>
+          <button class="link-btn" id="resetBtn" type="button"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i>Reiniciar</button>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Pasos" id="tabs"></div>
+
+      <figure class="graph-wrap">
+        <svg class="graph" id="graph" viewBox="0 0 340 112" role="img" aria-labelledby="graphCaption">
+          <path class="g-line" data-s="1" pathLength="1" d="M16 80 H96" />
+          <path class="g-line g-dash" data-s="2" d="M40 70 V36" />
+          <g class="g-node" data-s="2">
+            <rect x="8" y="10" width="64" height="22" rx="11" class="g-pill" />
+            <text x="40" y="25" class="g-text" text-anchor="middle">GitHub</text>
+          </g>
+          <path class="g-line g-branch" data-s="3" pathLength="1" d="M40 80 C70 80 76 44 108 44 H196" />
+          <path class="g-line" data-s="4" pathLength="1" d="M96 80 H324" />
+          <path class="g-line g-branch" data-s="4" pathLength="1" d="M196 44 C228 44 232 80 262 80" />
+          <g class="g-node" data-s="1">
+            <circle cx="40" cy="80" r="6" class="g-dot" />
+            <text x="16" y="104" class="g-label">main</text>
+          </g>
+          <g class="g-node" data-s="3">
+            <circle cx="150" cy="44" r="6" class="g-dot g-dot-branch" />
+            <text x="112" y="30" class="g-label g-label-branch">cambio-titulo</text>
+          </g>
+          <g class="g-node" data-s="4">
+            <rect x="204" y="52" width="40" height="18" rx="9" class="g-pill" />
+            <text x="224" y="64.5" class="g-text" text-anchor="middle">PR</text>
+            <circle cx="262" cy="80" r="7" class="g-dot g-dot-merge" />
+            <text x="262" y="104" class="g-label" text-anchor="middle">merge</text>
+          </g>
+        </svg>
+        <figcaption id="graphCaption"></figcaption>
+      </figure>
+
+      <div id="stepView" class="view"></div>
+
+      <div id="doneView" class="view" hidden>
+        <div class="celebrate">
+          <span class="celebrate-icon"><i class="ph ph-seal-check" aria-hidden="true"></i></span>
+          <h2>Completaste tu primer recorrido</h2>
+          <p class="muted">Creaste un repositorio, lo conectaste a GitHub, trabajaste en una rama y llevaste el cambio a main con una pull request. Ese es el flujo completo.</p>
+          <div class="block">
+            <div class="block-head">
+              <span class="block-label"><i class="ph ph-sparkle" aria-hidden="true"></i>Tu siguiente práctica</span>
+              <button class="copy-btn" type="button" data-copy="next"><i class="ph ph-copy" aria-hidden="true"></i><span>Copiar</span></button>
+            </div>
+            <p class="prompt" id="nextPrompt">Ahora cambia algo pequeño de esta misma interfaz en una rama nueva y ábrele una PR. Por ejemplo, un color o un texto. Explícame qué cambiaste y dame un enlace para probarlo antes de integrarlo a main.</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" id="guideLink" href="https://github.com/johanvillalbab/mi-primer-git/blob/main/GUIA.md" target="_blank" rel="noopener"><i class="ph ph-signpost" aria-hidden="true"></i>Siguientes pasos</a>
+            <button class="btn" type="button" id="backToSteps"><i class="ph ph-arrow-left" aria-hidden="true"></i>Ver los pasos</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">Hecho para practicar. Rompe cosas en una rama, main te espera.</footer>
+  </main>
+  <p class="sr-only" id="announcer" aria-live="polite"></p>
+  <script src="app.js"></script>
+</body>
+</html>
